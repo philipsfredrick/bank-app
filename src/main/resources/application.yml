@@ -1,0 +1,49 @@
+spring:
+  application:
+    name: bank-app
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:33450/bank_app?useSSL=false&useUnicode=true&characterEncoding=utf-8&allowPublicKeyRetrieval=true
+    username: dev_user
+    password: 2023mercedes
+    type: com.zaxxer.hikari.HikariDataSource
+  jpa:
+    generate-ddl: false
+    hibernate:
+      ddl-auto: none
+      naming:
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+    show-sql: false
+    open-in-view: false
+    properties:
+      jakarta:
+        persistence:
+          sharedCache:
+            mode: UNSPECIFIED
+      hibernate:
+        format_sql: false
+        use_sql_comments: false
+        dialect: org.hibernate.dialect.MySQLDialect
+  liquibase:
+    enabled: true
+    change-log: classpath:db/changelog/db.changelog-master.yaml
+
+server:
+  port: 9000
+
+jwt:
+  token:
+    secret: 7d0d6e50625e5a4ff260f5d8a02082f2a7b6fc9cdb8528a8ce5d2fe6c5112045
+
+api_key: ${api_key}
+api_secret: ${api_secret}
+cloud_name: ${cloud_name}
+
+#  api_key=561129184374513;
+#  api_secret=Sap18SHQXXUj92wFBf3xPqeM_eE;
+#  cloud_name=daikaj05w
+
+servlet:
+  multipart:
+    max-file-size: 10MB
+    max-request-size: 10MB

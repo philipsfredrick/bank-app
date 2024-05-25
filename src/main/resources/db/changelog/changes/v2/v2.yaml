@@ -1,0 +1,24 @@
+databaseChangeLog:
+  - changeSet:
+      id: v2
+      author: philipsfredrick
+      comment: populate data
+      changes:
+        - tagDatabase:
+            tag: v2
+        - sqlFile:
+            dbms: mysql
+            path: v2_insert.sql
+            relativeToChangelogFile: true
+        - createTable:
+            tableName: test_table
+            columns:
+              - column:
+                  name: test_column
+                  type: INT
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+
+
+

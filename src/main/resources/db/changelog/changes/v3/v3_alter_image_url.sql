@@ -1,0 +1,2 @@
+ALTER TABLE test_table
+ADD COLUMN image_url VARCHAR(255) DEFAULT NULL;
