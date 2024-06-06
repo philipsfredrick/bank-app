@@ -26,13 +26,14 @@ public class AccountResource implements Serializable {
 
     @JsonProperty("first_name")
     @NotBlank(message = "firstname must not be blank")
-    private String firstname;
+    private String firstName;
 
     @JsonProperty("last_name")
     @NotBlank(message = "lastname must not be blank")
-    private String lastname;
+    private String lastName;
 
     @Email(message = "email must not be blank")
+    @JsonProperty("email")
     @NotBlank(message = "email must not be blank")
     private String email;
 

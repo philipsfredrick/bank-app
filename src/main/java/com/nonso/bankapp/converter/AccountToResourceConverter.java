@@ -19,8 +19,8 @@ public class AccountToResourceConverter {
     public AccountResource convert(Account account, List<Wallet> wallets) {
         return AccountResource.builder()
                 .id(account.getId())
-                .firstname(account.getFirstName())
-                .lastname(account.getLastName())
+                .firstName(account.getFirstName())
+                .lastName(account.getLastName())
                 .email(account.getEmail())
                 .bankAccounts(wallets.parallelStream().map(walletToResourceConverter::convert).collect(toList()))
                 .build();

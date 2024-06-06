@@ -1,5 +1,6 @@
 package com.nonso.bankapp.entities;
 
+import com.nonso.bankapp.entities.enums.AccountType;
 import jakarta.persistence.*;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotNull;
@@ -43,6 +44,11 @@ public class Wallet {
     @ManyToOne(targetEntity = Account.class, fetch = FetchType.LAZY)
     @JoinColumn(name = "account_id", referencedColumnName = "id")
     private Account account;
+
+//    @Enumerated(EnumType.STRING)
+//    @NotNull(message = "account type must be specified")
+//    @Column(name = "account_type", columnDefinition = "ENUM('SAVINGS','CURRENT','FIXED_DEPOSIT','DOMICILIARY')", nullable = false)
+//    private AccountType accountType;
 
     @CreationTimestamp
     @Setter(AccessLevel.NONE)

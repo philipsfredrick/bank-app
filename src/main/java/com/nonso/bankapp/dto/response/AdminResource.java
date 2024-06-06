@@ -23,9 +23,9 @@ public class AdminResource implements Serializable {
 
     @JsonProperty("first_name")
     @NotBlank(message = "firstname must not be blank")
-    private String firstname;
+    private String firstName;
 
     @JsonProperty("last_name")
     @NotBlank(message = "lastname must not be blank")
-    private String lastname;
+    private String lastName;
 }

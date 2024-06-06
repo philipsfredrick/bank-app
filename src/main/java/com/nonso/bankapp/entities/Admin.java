@@ -47,9 +47,9 @@ public class Admin implements UserDetails {
     @Column(name = "password", nullable = false)
     private String password;
 
-    @NotNull(message = "Missing required image")
-    @Column(name = "image_url", nullable = false)
-    private String imageUrl;
+//    @NotNull(message = "Missing required image")
+//    @Column(name = "image_url", nullable = false)
+//    private String imageUrl;
 
     @Enumerated(EnumType.STRING)
     private Role role;
@@ -69,12 +69,11 @@ public class Admin implements UserDetails {
     private LocalDateTime deletedAt;
 
     public Admin(String firstName, String lastName, String email,
-                 String password, String imageUrl, Role role) {
+                 String password, Role role) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
         this.password = password;
-        this.imageUrl = imageUrl;
         this.role = role;
     }
 

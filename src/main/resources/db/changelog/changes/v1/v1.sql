@@ -65,7 +65,6 @@ CREATE TABLE `transaction`
     `type`              ENUM ('CREDIT','DEBIT')                    NOT NULL,
     `amount`            DECIMAL(18, 9)                             NOT NULL,
     `status`            ENUM ('SUCCESSFUL','PROCESSING', 'FAILED') NOT NULL,
-    `account_type`            ENUM ('SAVINGS','CURRENT', 'FIXED_DEPOSIT', 'DOMICILIARY') NOT NULL,
     `currency_code`     VARCHAR(3)                                 NOT NULL,
     `admin_id`          BIGINT                                     NOT NULL,
     `wallet_id`         BIGINT                                     NOT NULL,

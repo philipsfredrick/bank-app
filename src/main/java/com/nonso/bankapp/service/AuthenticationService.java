@@ -38,7 +38,7 @@ public class AuthenticationService {
     private final JwtService jwtService;
 
     private final PasswordEncoder passwordEncoder;
-    private final CloudinaryService cloudinaryService;
+//    private final CloudinaryService cloudinaryService;
 
     private final AdminRepository adminRepository;
 
@@ -49,13 +49,12 @@ public class AuthenticationService {
 
 
     @Transactional
-    public void register(AdminRegistrationRequest request, MultipartFile file) {
+    public void register(AdminRegistrationRequest request) {
         try {
             var admin = Admin.builder()
                     .firstName(request.getFirstName())
                     .lastName(request.getLastName())
                     .email(request.getEmail())
-                    .imageUrl(cloudinaryService.uploadImage(file))
                     .password(passwordEncoder.encode(request.getPassword()))
                     .role(ADMIN)
                     .build();

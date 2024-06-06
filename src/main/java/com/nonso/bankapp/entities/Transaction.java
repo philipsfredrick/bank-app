@@ -44,11 +44,6 @@ public class Transaction {
     @Column(columnDefinition = "ENUM('PROCESSING','FAILED','SUCCESSFUL')", nullable = false)
     private TransactionStatus status;
 
-    @Enumerated(EnumType.STRING)
-    @NotNull(message = "account type must be specified")
-    @Column(name = "account_type", columnDefinition = "ENUM('SAVINGS','CURRENT','FIXED_DEPOSIT','DOMICILIARY')", nullable = false)
-    private AccountType accountType;
-
     @NotNull(message = "Missing required field currency_code")
     @Column(name = "currency_code", nullable = false)
     private String currencyCode;

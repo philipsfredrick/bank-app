@@ -31,8 +31,8 @@ public class WalletService {
 
     public List<Wallet> createAccountWallets(Account account, List<CreateWalletRequest> request) {
         try {
-            List<Wallet> accounts = convert(account, request);
-            walletRepository.saveAll(accounts);
+            List<Wallet> wallets = convert(account, request);
+            walletRepository.saveAll(wallets);
 
             return retrieveAccountWallets(account);
         } catch (Exception e) {

@@ -19,11 +19,11 @@ public class AdminRegistrationRequest implements Serializable {
     private static final long serialVersionUID = 4122537134934090702L;
 
     @NotBlank(message = "firstname must not be blank")
-    @JsonProperty("firstName")
+    @JsonProperty("first_name")
     private String firstName;
 
     @NotBlank(message = "lastname must not be blank")
-    @JsonProperty("lastName")
+    @JsonProperty("last_name")
     private String lastName;
 
     @NotBlank(message = "email must not be blank")
@@ -34,7 +34,5 @@ public class AdminRegistrationRequest implements Serializable {
     @Size(min = 6, message = "password length must not be less than 6")
     private String password;
 
-    @NotBlank(message = "please upload your image file")
-    private String imageUrl;
 
 }

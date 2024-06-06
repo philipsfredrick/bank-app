@@ -25,10 +25,8 @@ public class AuthenticationController {
     private final AuthenticationService authenticationService;
 
     @PostMapping(value = "/register", consumes = {APPLICATION_JSON_VALUE, MULTIPART_FORM_DATA_VALUE}, produces = APPLICATION_JSON_VALUE)
-    public ResponseEntity<RegistrationResponse> register(@RequestParam("register") String register,
-                                                         @RequestParam("file") MultipartFile file) {
-        AdminRegistrationRequest request = new Gson().fromJson(register, AdminRegistrationRequest.class);
-        authenticationService.register(request,file);
+    public ResponseEntity<RegistrationResponse> register(@Valid @RequestBody AdminRegistrationRequest request) {
+        authenticationService.register(request);
         return new ResponseEntity<>(new RegistrationResponse("Admin account created successfully"), CREATED);
     }
 

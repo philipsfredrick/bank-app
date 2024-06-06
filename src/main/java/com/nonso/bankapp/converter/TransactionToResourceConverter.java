@@ -44,8 +44,8 @@ public class TransactionToResourceConverter {
         public static AdminResource convert(Admin admin) {
             return AdminResource.builder()
                     .id(admin.getId())
-                    .firstname(admin.getFirstName())
-                    .lastname(admin.getLastName())
+                    .firstName(admin.getFirstName())
+                    .lastName(admin.getLastName())
                     .build();
         }
     }

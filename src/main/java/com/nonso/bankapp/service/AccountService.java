@@ -22,19 +22,17 @@ import static org.springframework.http.HttpStatus.*;
 public class AccountService {
 
     private final AccountRepository accountRepository;
-    private final CredentialService credentialService;
 
-
-    public Account createAccount(CreateAccountRequest accountRequest) {
+    public Account createAccount(CreateAccountRequest request) {
         try {
             // check if account exists
-            validateRequest(accountRequest);
+            validateRequest(request);
             // create account and save in repository
             return accountRepository.save(
-                new Account(accountRequest.getEmail(), accountRequest.getFirstName(), accountRequest.getLastName())
+                new Account(request.getFirstName(), request.getLastName(), request.getEmail())
             );
         } catch (Exception e) {
-            log.error(format("An error occurred while creating Account. Possible reasons: %s",
+            log.error(format("An error occurred while creating Account. Possible reasons: %s ",
                     e.getLocalizedMessage()));
             if (e instanceof AccountServiceException) {
                 throw e;
@@ -46,9 +44,10 @@ public class AccountService {
 
 
     private void validateRequest(CreateAccountRequest request) {
-        accountRepository.findByEmail(request.getEmail()).orElseThrow(
-                () -> new AccountServiceException("email already in use, please update" +
-            "and try again", BAD_REQUEST, EMAIL_ALREADY_IN_USE));
+        accountRepository.findByEmail(request.getEmail()).ifPresent(account -> {
+            throw new AccountServiceException(
+                    "email already in use, please update and try again", BAD_REQUEST, EMAIL_ALREADY_IN_USE);
+        });
     }
 
     public Account retrieveAccount(Long accountId) {
