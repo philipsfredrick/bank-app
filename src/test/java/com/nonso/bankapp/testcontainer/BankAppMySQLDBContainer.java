@@ -3,7 +3,7 @@ package com.nonso.bankapp.testcontainer;
 import org.testcontainers.containers.MySQLContainer;
 
 public class BankAppMySQLDBContainer extends MySQLContainer<BankAppMySQLDBContainer> {
-    private static final String IMAGE_VERSION = "mysql:latest";
+    private static final String IMAGE_VERSION = "mysql:8.0.32";
 
     private static final String MYSQL_DATABASE = "bank_app";
 
@@ -17,15 +17,15 @@ public class BankAppMySQLDBContainer extends MySQLContainer<BankAppMySQLDBContai
         super(IMAGE_VERSION);
     }
 
-    public static  BankAppMySQLDBContainer getInstance() {
-        if (container == null) {
-            container = (new BankAppMySQLDBContainer())
-                    .withEnv("TZ", "America/New_York")
-                    .withDatabaseName(MYSQL_DATABASE)
-                    .withUsername(MYSQL_USER)
-                    .withPassword(MYSQL_PASSWORD);
-        }
-        return container;
+    public static BankAppMySQLDBContainer getInstance() {
+            if (container == null) {
+                container = (new BankAppMySQLDBContainer())
+                        .withEnv("TZ", "America/New_York")
+                        .withDatabaseName(MYSQL_DATABASE)
+                        .withUsername(MYSQL_USER)
+                        .withPassword(MYSQL_PASSWORD);
+            }
+            return container;
     }
 
     @Override

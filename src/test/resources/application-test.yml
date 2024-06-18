@@ -1,0 +1,25 @@
+spring:
+  datasource:
+    url: ${DB_URL}            # This environment variable is injected by TestContainers
+    username: ${DB_USERNAME}  # This environment variable is injected by TestContainers
+    password: ${DB_PASSWORD}  # This environment variable is injected by TestContainers
+    type: com.zaxxer.hikari.HikariDataSource
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    hikari:
+      maximum-pool-size: 20
+  jpa:
+    generate-ddl: false
+    hibernate:
+      ddl-auto: none
+  jmx:
+    enabled: false
+server:
+  port: 8095
+
+logging:
+  level:
+    root: INFO
+    org.springframework.web.filter.CommonsRequestLoggingFilter: DEBUG
+    com.zaxxer.hikari: debug
+    com.nonso.bankapp: DEBUG
+    org.hibernate.sql: DEBUG

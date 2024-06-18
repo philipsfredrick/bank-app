@@ -2,7 +2,7 @@ version: '3.9'
 
 services:
   mysql:
-    image: bitnami/mysql:latest
+    image: bitnami/mysql:8.0.32
     ports:
       - '33450:3306'
     volumes:
